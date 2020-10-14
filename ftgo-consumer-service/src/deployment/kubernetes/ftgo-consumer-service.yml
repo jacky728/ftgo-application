@@ -53,16 +53,16 @@ spec:
             value: ftgo-zookeeper:2181
           - name: EVENTUATE_DATABASE_SCHEMA
             value: ftgo_consumer_service
-        livenessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 20
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 20
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
 ---

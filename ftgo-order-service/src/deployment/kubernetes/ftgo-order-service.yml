@@ -65,16 +65,16 @@ spec:
             value: ftgo-kafka:9092
           - name: EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING
             value: ftgo-zookeeper:2181
-        livenessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 20
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 20
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator/health
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
 ---
