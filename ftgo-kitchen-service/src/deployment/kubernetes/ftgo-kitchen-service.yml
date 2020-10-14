@@ -57,6 +57,8 @@ spec:
             value: ftgo-kafka:9092
           - name: EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING
             value: ftgo-zookeeper:2181
+          - name: EVENTUATE_DATABASE_SCHEMA
+            value: ftgo_kitchen_service
         # livenessProbe:
         #   httpGet:
         #     path: /actuator/health
