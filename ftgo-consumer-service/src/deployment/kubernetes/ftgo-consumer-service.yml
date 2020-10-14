@@ -32,7 +32,7 @@ spec:
       containers:
       - name: ftgo-consumer-service
         image: msapatterns/ftgo-consumer-service:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
           name: httpport

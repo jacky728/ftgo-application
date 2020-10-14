@@ -40,7 +40,7 @@ spec:
       containers:
       - name: ftgo-order-service
         image: msapatterns/ftgo-order-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
           name: httpport
@@ -61,6 +61,12 @@ spec:
                 key: password
           - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
             value: com.mysql.jdbc.Driver
+          - name: SPRING_SLEUTH_ENABLED
+            value: "true"
+          - name: SPRING_SLEUTH_SAMPLER_PROBABILITY
+            value: "1"
+          - name: SPRING_ZIPKIN_BASE_URL
+            value: "http://ftgo-zipkin:9411/"
           - name: EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS
             value: ftgo-kafka:9092
           - name: EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING

@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftgo-zipkin
+spec:
+  ports:
+  - port: 9411
+    targetPort: 9411
+  selector:
+    svc: ftgo-zipkin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftgo-zipkin
+  labels:
+    application: ftgo
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      svc: ftgo-zipkin
+  template:
+    metadata:
+      labels:
+        svc: ftgo-zipkin
+    spec:
+      containers:
+      - name: ftgo-zipkin
+        image: openzipkin/zipkin:2.5.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9411
+          hostPort: 9411
+        # livenessProbe:
+        #   httpGet:
+        #     path: /actuator
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
+        # readinessProbe:
+        #   httpGet:
+        #     path: /actuator
+        #     port: 8080
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 20
+---

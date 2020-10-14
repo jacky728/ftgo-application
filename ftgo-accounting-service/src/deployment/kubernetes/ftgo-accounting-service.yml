@@ -32,7 +32,7 @@ spec:
       containers:
       - name: ftgo-accounting-service
         image: msapatterns/ftgo-accounting-service:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
           name: httpport

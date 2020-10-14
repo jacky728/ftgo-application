@@ -39,7 +39,7 @@ spec:
       containers:
       - name: ftgo-api-gateway
         image: msapatterns/ftgo-api-gateway:latest
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
           name: httpport
@@ -52,6 +52,12 @@ spec:
             value: http://ftgo-order-history-service:8080
           - name: CONSUMER_DESTINATIONS_CONSUMERSERVICEURL
             value: http://ftgo-consumer-service:8080
+          - name: SPRING_SLEUTH_ENABLED
+            value: "true"
+          - name: SPRING_SLEUTH_SAMPLER_PROBABILITY
+            value: "1"
+          - name: SPRING_ZIPKIN_BASE_URL
+            value: "http://ftgo-zipkin:9411/"
         # livenessProbe:
         #   httpGet:
         #     path: /actuator/health
