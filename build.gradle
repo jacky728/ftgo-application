@@ -61,4 +61,6 @@ dockerCompose {
   if (project.hasProperty('startedServices'))
     startedServices= project.ext.startedServices.split(',')
 
+  waitForHealthyStateTimeout = Duration.ofMinutes(30)
+
 }
